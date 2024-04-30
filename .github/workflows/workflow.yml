@@ -17,9 +17,15 @@ jobs:
 
     strategy:
       matrix:
-        node-version: 18.x
-
+        node-version: '18.x'
+    
     steps:
+     create-stack:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3 
+
       # Check out the code from the repository.
       - uses: actions/checkout@v3
 
@@ -39,28 +45,4 @@ jobs:
 
       # Send a console message at completion.
       - run: |
-          echo "Hello ${{github.actor}}. You pushed to ${{github.repository}} at $(date)."
-
-  stage:
-    runs-on: ubuntu-latest
-    needs: install-build-test
-    environment:
-      name: staging
-
-    steps:
-      # Simulate a Deployment
-      - name: Deploy to Staging
-        run: |
-         echo "Deployed to staging environment"
-
-  production:
-    runs-on: ubuntu-latest
-    needs: stage
-    environment:
-      name: production
-
-    steps:
-      # Simulate a Deployment
-      - name: Deploy to Production
-        run: |
-         echo "Deployed to production environment"
+          echo "Hello ${{github.actor}}. You pushed to ${{github.repository}} at $(date)." 
