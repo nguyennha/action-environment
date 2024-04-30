@@ -18,10 +18,7 @@ jobs:
     strategy:
       matrix:
         node-version: '18.x'
-    
-    steps:
-     create-stack:
-    runs-on: ubuntu-latest
+     
     steps:
     - name: Checkout
       uses: actions/checkout@v3 
