@@ -24,6 +24,5 @@ jobs: # Jobs defined in the workflow
       uses: aws-actions/aws-cloudformation-github-deploy@v1
       with:
         name: createCloudformation
-        template: createCloudformation.yaml
-        parameter-overrides: "MyParam1=myValue,MyParam2=${{ secrets.MY_SECRET_VALUE }}"
+        template: createCloudformation.yaml 
         no-fail-on-empty-changeset: "1"
