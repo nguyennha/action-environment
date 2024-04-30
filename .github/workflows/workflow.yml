@@ -9,7 +9,7 @@ on:
     branches: 
       - main
 
-#Use a matrix strategy to use Node.js versions 16.x and 18.x
+#Use a matrix strategy to use Node.js versions 20 
 jobs:
   install-build-test:
 
@@ -19,12 +19,19 @@ jobs:
       matrix:
         node-version: [20]
 
-    steps:
-      # Check out the code from the repository.
-      - uses: actions/checkout@v3
+    steps 
 
       # Set up a Node.js environment using the specified node version.
-      - uses: actions/setup-node@v3
+      steps:
+      # Reference a specific commit
+      - uses: actions/checkout@8f4b7f84864484a7bf31766abe9204da3cbe65b3
+      # Reference the major version of a release
+      - uses: actions/checkout@v4
+      # Reference a specific version
+      - uses: actions/checkout@v4.2.0
+      # Reference a branch
+      - uses: actions/checkout@main
+
         with:
           node-version: ${{ matrix.node-version }}
 
